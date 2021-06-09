@@ -7,9 +7,14 @@ class MovieTable extends Component {
   };
 
   render() {
+    const { movies: mv } = this.state;
+
+    if (mv.length === 0) return <div className="alert alert-warning">There are no movies at the moment</div>;
+
     return (
       <div>
         <h3>Please see our movies</h3>
+        <p>Showing {mv.length} movies in our store</p>
         <table className="table table-striped">
           <thead>
             <tr>
@@ -27,7 +32,9 @@ class MovieTable extends Component {
                 <td>{m.numberInStock}</td>
                 <td>{m.dailyRentalRate}</td>
                 <td>
-                  <button className="btn btn-danger">Delete</button>
+                  <button onClick={() => this.handleDelete(m._id)} className="btn btn-danger">
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}
@@ -36,6 +43,12 @@ class MovieTable extends Component {
       </div>
     );
   }
+
+  handleDelete = (movieId) => {
+    console.log('deleting', movieId);
+    const moviesWithoutTheOneWeDeleted = this.state.movies.filter((m) => m._id !== movieId);
+    this.setState({ movies: moviesWithoutTheOneWeDeleted });
+  };
 }
 
 export default MovieTable;

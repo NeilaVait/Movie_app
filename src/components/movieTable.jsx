@@ -10,7 +10,7 @@ class MovieTable extends Component {
     return (
       <div>
         <h3>Please see our movies</h3>
-        <table className="table table-row">
+        <table className="table table-striped">
           <thead>
             <tr>
               <th>Title</th>
@@ -37,13 +37,5 @@ class MovieTable extends Component {
     );
   }
 }
-
-// prisideti bootstrap@4.6
-// isitraukti bootstrap css
-
-// sugeneruoti lentele su duomenimis
-// https://getbootstrap.com/docs/4.6/content/tables/
-
-//prisideti dar viena stulpelis ir jame turi buti delete mygtukas
 
 export default MovieTable;

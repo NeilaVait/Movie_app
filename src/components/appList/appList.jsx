@@ -1,9 +1,18 @@
 import React, { Component } from 'react';
 
+// ikeliam style
+import './style.css';
+
 class AppList extends Component {
   state = {};
   render() {
-    return <h2>I am List</h2>;
+    return (
+      <ul className="todo-list">
+        {this.props.todos.map((t) => (
+          <li key={t.id}>{t.title}</li>
+        ))}
+      </ul>
+    );
   }
 }
 

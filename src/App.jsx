@@ -16,13 +16,24 @@ class App extends Component {
     ],
   };
 
-  handleCheckUncheck() {}
+  handleCheckUncheck = (todoId) => {
+    const todos = [...this.state.todos];
+    const found = todos.find((t) => t.id === todoId);
+    found.isDone = !found.isDone;
+    this.setState({ todos });
+  };
+
+  handleDelete = (todoId) => {
+    console.log('click');
+    const todos = [...this.state.todos].filter((t) => t.id !== todoId);
+    this.setState({ todos });
+  };
 
   render() {
     return (
       <div className="App">
         <AppHeader />
-        <AppList handleCheckUncheck={this.handleCheckUncheck} todos={this.state.todos} />
+        <AppList onDelete={this.handleDelete} onCheckUncheck={this.handleCheckUncheck} todos={this.state.todos} />
         <AppAddTodo />
       </div>
     );

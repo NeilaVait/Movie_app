@@ -3,6 +3,9 @@ import AppHeader from './components/appHeader/appHeader';
 import AppList from './components/appList/appList';
 import AppAddTodo from './components/appAddTodo/appAddTodo';
 
+// app styles
+import './App.css';
+
 class App extends Component {
   state = {};
   render() {

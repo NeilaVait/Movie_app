@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import TodoEl from '../appTodoEl/appTodoEl';
 
 // ikeliam style
 import './style.css';
@@ -9,7 +10,7 @@ class AppList extends Component {
     return (
       <ul className="todo-list">
         {this.props.todos.map((t) => (
-          <li key={t.id}>{t.title}</li>
+          <TodoEl handleCheckUncheck={this.props.handleCheckUncheck} singleTodo={t} key={t.id}></TodoEl>
         ))}
       </ul>
     );

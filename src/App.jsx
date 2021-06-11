@@ -25,7 +25,7 @@ class App extends Component {
 
   handleDelete = (todoId) => {
     console.log('click');
-    const todos = [...this.state.todos].filter((t) => t.id !== todoId);
+    const todos = this.state.todos.filter((t) => t.id !== todoId);
     this.setState({ todos });
   };
 

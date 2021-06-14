@@ -14,7 +14,7 @@ class App extends Component {
       { id: 3, isDone: false, title: 'Go to park', isEditOn: false },
       { id: 4, isDone: false, title: 'Learn react', isEditOn: false },
     ],
-    currentId: 4,
+    currentId: 5,
   };
 
   handleEdit = (editId, newTitleVal) => {
@@ -40,6 +40,12 @@ class App extends Component {
 
   handleAddTodo = (todoTitle) => {
     console.log('add new todo', todoTitle);
+
+    const todosPlusnew = [...this.state.todos];
+    const newTodo = { id: this.state.currentId, isDone: false, title: todoTitle, isEditOn: false };
+    todosPlusnew.push(newTodo);
+
+    this.setState({ todos: todosPlusnew, currentId: this.state.currentId + 1 });
   };
 
   render() {

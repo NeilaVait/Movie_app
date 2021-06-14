@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import './style.css';
 
 class AppTodo extends Component {
   state = {
-    newTodo: 'asdasd',
+    newTodo: '',
   };
 
   handleChange = (event) => {
@@ -17,7 +18,7 @@ class AppTodo extends Component {
   render() {
     return (
       <div className="add-todo-container">
-        <i onClick={() => this.props.onAddTodo(this.state.newTodo)} className="fa fa-plus-circle"></i>
+        <i onClick={() => this.props.onAddTodo(this.state.newTodo)} className="fa fa-plus-circle add-icon"></i>
         <input onChange={this.handleChange} value={this.state.newTodo} type="text" placeholder="Add new todo" />
       </div>
     );

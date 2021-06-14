@@ -17,6 +17,16 @@ class App extends Component {
     currentId: 5,
   };
 
+  componentDidMount() {
+    this.sortTodos();
+  }
+
+  sortTodos() {
+    const todos = [...this.state.todos];
+    todos.sort((a, b) => a.isDone - b.isDone);
+    this.setState({ todos });
+  }
+
   handleEdit = (editId, newTitleVal) => {
     console.log('handleEdit', editId, newTitleVal);
     const todosCopy = [...this.state.todos];
@@ -34,7 +44,9 @@ class App extends Component {
     const todos = [...this.state.todos];
     const found = todos.find((t) => t.id === todoId);
     found.isDone = !found.isDone;
-    this.setState({ todos });
+
+    //issrikiuoti pagal isdone savybe
+    this.sortTodos();
   };
 
   handleDelete = (todoId) => {
@@ -48,7 +60,7 @@ class App extends Component {
 
     const todosPlusnew = [...this.state.todos];
     const newTodo = { id: this.state.currentId, isDone: false, title: todoTitle, isEditOn: false };
-    todosPlusnew.push(newTodo);
+    todosPlusnew.unshift(newTodo);
 
     this.setState({ todos: todosPlusnew, currentId: this.state.currentId + 1 });
   };

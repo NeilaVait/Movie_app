@@ -21,6 +21,11 @@ class App extends Component {
     console.log('handleEdit', editId, newTitleVal);
     const todosCopy = [...this.state.todos];
     const found = todosCopy.find((t) => t.id === editId);
+
+    if (found.isEditOn) {
+      found.title = newTitleVal;
+    }
+
     found.isEditOn = !found.isEditOn;
     this.setState({ todos: todosCopy });
   };

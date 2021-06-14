@@ -1,5 +1,11 @@
 /* reset / common */
 
+input[type='text'] {
+  font-size: 1em;
+  line-height: 1.5;
+  padding: 0.1em;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;

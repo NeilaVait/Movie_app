@@ -16,7 +16,7 @@ class AppTodoEl extends Component {
     const spanOrTodo = isEditOn ? (
       <input type="text" value={this.state.editTitle} onChange={this.handleChange} />
     ) : (
-      <span className={isDone ? 'doneTitle' : ''}>{title}</span>
+      <span className={isDone ? 'done-title' : ''}>{title}</span>
     );
 
     return (
@@ -26,7 +26,7 @@ class AppTodoEl extends Component {
           className={isDone ? 'fa fa-check-circle' : 'fa fa-circle-thin'}
         ></i>
         {spanOrTodo}
-        <i onClick={() => this.props.onEdit(id, this.state.editTitle)} className="fa fa-pencil"></i>
+        {!isDone ? <i onClick={() => this.props.onEdit(id, this.state.editTitle)} className="fa fa-pencil"></i> : ''}
         <i onClick={() => this.props.onDelete(id)} className="fa fa-trash"></i>
       </li>
     );

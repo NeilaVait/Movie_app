@@ -7,12 +7,15 @@ import './style.css';
 class AppList extends Component {
   state = {};
   render() {
+    const { onDelete, onCheckUncheck, onEdit, todos } = this.props;
+
     return (
       <ul className="todo-list">
-        {this.props.todos.map((t) => (
+        {todos.map((t) => (
           <TodoEl
-            onDelete={this.props.onDelete}
-            onCheckUncheck={this.props.onCheckUncheck}
+            onEdit={onEdit}
+            onDelete={onDelete}
+            onCheckUncheck={onCheckUncheck}
             singleTodo={t}
             key={t.id}
           ></TodoEl>

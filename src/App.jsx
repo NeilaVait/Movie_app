@@ -9,11 +9,20 @@ import './App.css';
 class App extends Component {
   state = {
     todos: [
-      { id: 1, isDone: true, title: 'Buy milk' },
-      { id: 2, isDone: false, title: 'Buy tv' },
-      { id: 3, isDone: false, title: 'Go to park' },
-      { id: 4, isDone: false, title: 'Learn react' },
+      { id: 1, isDone: true, title: 'Buy milk', isEditOn: false },
+      { id: 2, isDone: false, title: 'Buy tv', isEditOn: false },
+      { id: 3, isDone: false, title: 'Go to park', isEditOn: false },
+      { id: 4, isDone: false, title: 'Learn react', isEditOn: false },
     ],
+    currentId: 4,
+  };
+
+  handleEdit = (editId, newTitleVal) => {
+    console.log('handleEdit', editId, newTitleVal);
+    const todosCopy = [...this.state.todos];
+    const found = todosCopy.find((t) => t.id === editId);
+    found.isEditOn = !found.isEditOn;
+    this.setState({ todos: todosCopy });
   };
 
   handleCheckUncheck = (todoId) => {
@@ -29,12 +38,21 @@ class App extends Component {
     this.setState({ todos });
   };
 
+  handleAddTodo = (todoTitle) => {
+    console.log('add new todo', todoTitle);
+  };
+
   render() {
     return (
       <div className="App">
         <AppHeader />
-        <AppList onDelete={this.handleDelete} onCheckUncheck={this.handleCheckUncheck} todos={this.state.todos} />
-        <AppAddTodo />
+        <AppList
+          onEdit={this.handleEdit}
+          onDelete={this.handleDelete}
+          onCheckUncheck={this.handleCheckUncheck}
+          todos={this.state.todos}
+        />
+        <AppAddTodo onAddTodo={this.handleAddTodo} />
       </div>
     );
   }
